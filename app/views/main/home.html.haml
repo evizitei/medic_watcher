@@ -1,3 +1,17 @@
 -if flash[:notice]
   =flash[:notice]
+  
+%h2 Current Medic Count
+%table
+  %thead
+    %tr
+      %th Time
+      %th Medics
+  %tbody
+    -MedicRecord.limit(10).order("id desc").each do |rec|
+      %tr
+        %td= rec.created_at.strftime("%I:%M %p")
+        %td= rec.count
+      
+%br
 =button_to "test message","/send_test_message"
