@@ -1,12 +1,14 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0.rc'
+gem 'rails', '3.0.0.rc2'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+gem 'pg',:group=>:production
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'mechanize'
+gem 'delayed_job'
+gem "haml"
+gem "sms_fu"
+gem 'pony'
 
 # Use unicorn as the web server
 # gem 'unicorn'
