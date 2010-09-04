@@ -5,7 +5,6 @@ gem 'rails', '3.0.0.rc2'
 gem 'pg',:group=>:production
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'mechanize'
-gem 'delayed_job'
 gem "haml"
 gem "sms_fu"
 gem 'pony'
