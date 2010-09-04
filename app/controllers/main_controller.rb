@@ -1,5 +1,6 @@
 class MainController < ApplicationController
   def home
+    Time.zone = "America/Chicago"
   end
   
   def test_message
