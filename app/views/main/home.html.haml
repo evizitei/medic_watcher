@@ -1,7 +1,7 @@
 -if flash[:notice]
   =flash[:notice]
   
-%h2 Current Medic Count
+%h2== Current Medic Count as of #{DateTime.now.strftime("%m/%d/%Y %H:%M")}
 %table
   %thead
     %tr
@@ -14,7 +14,7 @@
   %tbody
     -MedicRecord.limit(10).order("id desc").each do |rec|
       %tr
-        %td= rec.created_at.strftime("%I:%M %p")
+        %td= rec.created_at.strftime("%H:%M")
         %td==--
         %td
           %strong==  #{rec.count}
