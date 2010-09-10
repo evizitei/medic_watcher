@@ -1,7 +1,7 @@
 -if flash[:notice]
   =flash[:notice]
   
-%h2== Current Medic Count as of #{Time.now.strftime("%m/%d/%Y %H:%M")}
+%h2== Current Medic Count as of #{Time.zone.now.strftime("%m/%d/%Y %H:%M")}
 %table
   %thead
     %tr
