@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100904193757) do
+ActiveRecord::Schema.define(:version => 20100910003546) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -25,10 +25,18 @@ ActiveRecord::Schema.define(:version => 20100904193757) do
     t.datetime "updated_at"
   end
 
+  create_table "medic_alerts", :force => true do |t|
+    t.string   "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "medic_records", :force => true do |t|
     t.integer  "count"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "m131_available"
+    t.boolean  "m241_available"
   end
 
 end

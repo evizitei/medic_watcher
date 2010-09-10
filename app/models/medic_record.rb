@@ -5,7 +5,10 @@ class MedicRecord < ActiveRecord::Base
       if((prior_record.count >= 2 and record.count <= 1) or 
          (prior_record.count >= 1 and record.count <= 0) or
          ((prior_record.count <= 1) and record.count >= 2))
-         SmsProxy.new.deliver("City Status Is #{record.count}")
+         msg = %Q{City Status Is #{record.count}. 
+                  M131 -> #{record.m131_available ? "Available" : "Unavailable"}
+                  M241 -> #{record.m241_available ? "Available" : "Unavailable"}}
+         SmsProxy.new.deliver(msg)
       end
     end
   end
