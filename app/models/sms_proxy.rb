@@ -1,7 +1,7 @@
 class SmsProxy
   def deliver(message)
     start_time = Time.parse("05:00:00")
-    stop_time = Time.parse("20:00:00")
+    stop_time = Time.parse("21:00:00")
     now_time = Time.now
     sms_fu = SMSFu::Client.configure(:delivery => :action_mailer)
     [{:number=>"5732395840",:carrier=>"at&t"},
