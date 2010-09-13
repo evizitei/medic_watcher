@@ -11,5 +11,11 @@ class MedicRecord < ActiveRecord::Base
          SmsProxy.new.deliver(msg)
       end
     end
+    Rails.cache.write('cur_recs',nil)
+    Rails.cache.write('cur_msgs',nil) 
+  end
+  
+  def self.main_display
+    MedicRecord.limit(10).order("id desc").all
   end
 end
