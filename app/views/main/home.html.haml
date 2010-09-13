@@ -34,7 +34,7 @@
       %th Message
   %tbody
     -MedicAlert.limit(5).order("id desc").each do |alert|
-      %tr{:class=>message_class(rec.message)}
+      %tr{:class=>message_class(alert.message)}
         %td= alert.created_at.strftime("%m/%d/%Y %H:%M")
         %td==--
         %td= alert.message
