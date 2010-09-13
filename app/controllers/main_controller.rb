@@ -1,6 +1,4 @@
 class MainController < ApplicationController
-  caches_page :home
-  cache_sweeper :medic_sweeper
   
   def home
     Time.zone = "America/Chicago"
