@@ -13,7 +13,7 @@
       %th M241
   %tbody
     -MedicRecord.limit(10).order("id desc").each do |rec|
-      %tr
+      %tr{:class=>count_class(rec.count)}
         %td= rec.created_at.strftime("%H:%M")
         %td==--
         %td
@@ -23,4 +23,33 @@
         %td= (rec.m241_available ? "Available" : "Unavailable")
       
 %br
-=button_to "test message","/send_test_message"
+%br
+
+%h2 Recent Alerts
+%table
+  %thead
+    %tr
+      %th Time Stamp
+      %th --
+      %th Message
+  %tbody
+    -MedicAlert.limit(5).order("id desc").each do |alert|
+      %tr{:class=>message_class(rec.message)}
+        %td= alert.created_at.strftime("%m/%d/%Y %H:%M")
+        %td==--
+        %td= alert.message
+%style
+  :sass
+    table
+      :border-collapse collapse
+      :border 1px black solid
+      .stable
+        :background-color #33FF33
+      .warn
+        :background-color #FFFF55
+      .bad
+        :background-color #FF4444
+      tr
+        :border 1px black solid
+        td, th
+          :border 1px black solid
