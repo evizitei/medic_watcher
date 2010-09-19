@@ -22,8 +22,8 @@
         %td
           %strong==  #{rec.count}
         %td==--
-        %td= (rec.m131_available ? "Available" : "Unavailable")
-        %td= (rec.m241_available ? "Available" : "Unavailable")
+        %td= rec.m131_status
+        %td= rec.m241_status
       
 %br
 %br

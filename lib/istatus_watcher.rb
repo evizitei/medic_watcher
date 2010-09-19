@@ -1,6 +1,7 @@
 require 'mechanize'
 
 class IstatusWatcher
+  STATUSI = ["AVL","DSP","ENR","TRN","ARV","AV1","INC","OFF","ONS","ORP","ENH","ONH","AOS","OOD","OOS","AAS"]
   
   def how_many_available?
     match_medic_link_nodes(/TruckID=M(11|15|21|22|23)\d/).size
@@ -10,9 +11,18 @@ class IstatusWatcher
     match_medic_link_nodes(/TruckID=M#{medic_number}/).size >= 1
   end
   
-  def match_medic_link_nodes(regex)
+  def medic_status?(medic_number)
+    STATUSI.each do |status|
+      if match_medic_link_nodes(/TruckID=M#{medic_number}/,status).size >= 1
+        return status
+      end
+    end
+    return "OOS"
+  end
+  
+  def match_medic_link_nodes(regex,status = "AVL")
     page = fetch_medic_page
-    nodes = page.parser.css("a.AVL")
+    nodes = page.parser.css("a.#{status}")
     nodes.map{|node| node.attributes["href"].value}.select{|val| val =~ regex}
   end
   
