@@ -9,10 +9,13 @@ class MainController < ApplicationController
   
   def graphs
     total = MedicRecord.count.to_f
-    two_plus = (((MedicRecord.status_norm.size.to_f/total) * 1000).round.to_f / 10)
+    five_plus = (((MedicRecord.status_high.size.to_f/total) * 1000).round.to_f / 10)
+    four = (((MedicRecord.with_count(4).size.to_f/total) * 1000).round.to_f / 10)
+    three = (((MedicRecord.with_count(3).size.to_f/total) * 1000).round.to_f / 10)
+    two = (((MedicRecord.with_count(2).size.to_f/total) * 1000).round.to_f / 10)
     one = (((MedicRecord.status_one.size.to_f/total) * 1000).round.to_f / 10)
     zero = (((MedicRecord.status_zero.size.to_f/total) * 1000).round.to_f / 10)
-    @data_string = "[['Two or more',#{two_plus}],['One',#{one}],['Zero',#{zero}]]"
+    @data_string = "[['Five or more',#{five_plus}],['Four',#{four}],['Three',#{three}],['Two',#{two}],['One',#{one}],['Zero',#{zero}]]"
   end
   
   def test_message
