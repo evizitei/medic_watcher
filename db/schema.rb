@@ -35,6 +35,10 @@ ActiveRecord::Schema.define(:version => 20100923213844) do
     t.integer  "count"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "m131_available"
+    t.boolean  "m241_available"
+    t.string   "m131_status"
+    t.string   "m241_status"
   end
 
   add_index "medic_records", ["count"], :name => "index_medic_records_on_count"

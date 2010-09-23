@@ -8,6 +8,7 @@ gem 'mechanize'
 gem "haml"
 gem "sms_fu"
 gem 'pony'
+#gem 'memcached-northscale', :require => 'memcached'
 
 # Use unicorn as the web server
 # gem 'unicorn'

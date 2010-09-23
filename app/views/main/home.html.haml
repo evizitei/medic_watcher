@@ -1,7 +1,10 @@
+:javascript
+  setTimeout("window.location.reload(true)",60000);
+  
 -if flash[:notice]
   =flash[:notice]
   
-%h2 Current Medic Count
+%h2== Current Medic Count as of #{Time.zone.now.strftime("%m/%d/%Y %H:%M")}
 %table
   %thead
     %tr
@@ -12,12 +15,45 @@
       %th M131
       %th M241
   %tbody
-    -MedicRecord.limit(10).order("id desc").each do |rec|
-      %tr
-        %td= rec.created_at.strftime("%I:%M %p")
+    -@records.each do |rec|
+      %tr{:class=>count_class(rec.count)}
+        %td= rec.created_at.strftime("%H:%M")
         %td==--
         %td
           %strong==  #{rec.count}
+        %td==--
+        %td= rec.m131_status
+        %td= rec.m241_status
       
 %br
+
+%h2 Recent Alerts
+%table
+  %thead
+    %tr
+      %th Time Stamp
+      %th --
+      %th Message
+  %tbody
+    -@messages.each do |alert|
+      %tr{:class=>message_class(alert.message)}
+        %td= alert.created_at.strftime("%m/%d/%Y %H:%M")
+        %td==--
+        %td= alert.message
+        
 =button_to "Graphs","/graphs"
+%style
+  :sass
+    table
+      :border-collapse collapse
+      :border 1px black solid
+      .stable
+        :background-color #33FF33
+      .warn
+        :background-color #FFFF55
+      .bad
+        :background-color #FF4444
+      tr
+        :border 1px black solid
+        td, th
+          :border 1px black solid
