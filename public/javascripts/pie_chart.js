@@ -6,7 +6,7 @@ $(document).ready(function() {
 			margin: [50, 200, 60, 170]
 		},
 		title: {
-			text: 'City Status % over all time'
+			text: 'City Status (% over all time)'
 		},
 		plotArea: {
 			shadow: null,
