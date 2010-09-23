@@ -1,0 +1,6 @@
+=javascript_include_tag "jquery"
+%script{:type=>"text/javascript",:src=>"/javascripts/Highcharts/js/highcharts.js"}
+=javascript_include_tag "pie_chart"
+#graph_data{:style=>"display:none;"}
+  =@data_string
+#container{:style=>"width: 800px; height: 400px; margin: 0 auto"}

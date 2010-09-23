@@ -7,7 +7,10 @@
     %tr
       %th Time
       %th --
-      %th Medics
+      %th City Medics
+      %th -- 
+      %th M131
+      %th M241
   %tbody
     -MedicRecord.limit(10).order("id desc").each do |rec|
       %tr
@@ -17,4 +20,4 @@
           %strong==  #{rec.count}
       
 %br
-=button_to "test message","/send_test_message"
+=button_to "Graphs","/graphs"
