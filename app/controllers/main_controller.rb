@@ -9,9 +9,9 @@ class MainController < ApplicationController
   
   def graphs
     total = MedicRecord.count.to_f
-    two_plus = MedicRecord.status_norm.size.to_f/total
-    one = MedicRecord.status_one.size.to_f/total
-    zero = MedicRecord.status_zero.size.to_f/total
+    two_plus = (((MedicRecord.status_norm.size.to_f/total) * 1000).round.to_f / 10)
+    one = (((MedicRecord.status_one.size.to_f/total) * 1000).round.to_f / 10)
+    zero = (((MedicRecord.status_zero.size.to_f/total) * 1000).round.to_f / 10)
     @data_string = "[['Two or more',#{two_plus}],['One',#{one}],['Zero',#{zero}]]"
   end
   
