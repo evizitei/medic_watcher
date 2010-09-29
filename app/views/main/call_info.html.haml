@@ -17,12 +17,12 @@
         %strong Apparatus:
       %td=@call_info[:apparatus].join(" , ")
 %hr
--@call_info[:notes][:operators].each do |op,notes|
-  .operator
-    %h3= op
-    %table
-      -notes.each do |note|
-        %tr
-          %td{:style=>"width:200px;"}= note[:time]
-          %td= note[:text]
-  %hr
+  -@call_info[:notes][:operators].each do |op,notes|
+    .operator
+      %h3= op
+      %table
+        -notes.each do |note|
+          %tr
+            %td{:style=>"width:200px;"}= note[:time]
+            %td= note[:text]
+    %hr
