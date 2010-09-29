@@ -1,0 +1,28 @@
+=form_tag :url=>{:action=>"call_info"} do
+  %strong Incident ID:
+  =text_field_tag :id,(@call_info ? @call_info[:id] : "")
+  =submit_tag "Fetch Notes"
+-if @call_info
+  %table.header{:style=>"border:2px solid black;margin-top:10px;"}
+    %tr
+      %td
+        %strong Address:
+      %td=@call_info[:address]
+    %tr
+      %td 
+        %strong Nature:
+      %td=@call_info[:nature]
+    %tr
+      %td
+        %strong Apparatus:
+      %td=@call_info[:apparatus].join(" , ")
+%hr
+-@call_info[:notes][:operators].each do |op,notes|
+  .operator
+    %h3= op
+    %table
+      -notes.each do |note|
+        %tr
+          %td{:style=>"width:200px;"}= note[:time]
+          %td= note[:text]
+  %hr

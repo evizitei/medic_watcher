@@ -2,6 +2,7 @@ MedicWatcher::Application.routes.draw do
   match "/" => "main#home"
   match "send_test_message" => "main#test_message"
   match "graphs" => "main#graphs"
+  match "call_info" => "main#call_info"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

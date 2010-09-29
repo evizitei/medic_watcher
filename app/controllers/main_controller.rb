@@ -1,3 +1,4 @@
+require 'istatus_watcher'
 class MainController < ApplicationController
   
   def home
@@ -22,6 +23,12 @@ class MainController < ApplicationController
     SmsProxy.new.deliver("TEST ONLY message from medic watcher")
     flash[:notice] = "Message sent"
     redirect_to :action=>:home
+  end
+  
+  def call_info
+    if params[:id]
+      @call_info = IstatusWatcher.new.fetch_call_info(params[:id].to_i)
+    end
   end
   
 protected
