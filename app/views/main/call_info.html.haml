@@ -16,7 +16,7 @@
       %td
         %strong Apparatus:
       %td=@call_info[:apparatus].join(" , ")
-%hr
+  %hr
   -@call_info[:notes][:operators].each do |op,notes|
     .operator
       %h3= op
