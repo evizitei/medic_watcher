@@ -18,7 +18,7 @@
       %td=@call_info[:apparatus].join(" , ")
   %hr
   -index = 1
-  -@call_info[:notes][:operators].each_with_index do |op,notes|
+  -@call_info[:notes][:operators].each do |op,notes|
     .operator
       %h3== Operator #{index} 
       %h5=op
