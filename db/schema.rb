@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100923213844) do
+ActiveRecord::Schema.define(:version => 20101222185941) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -21,6 +21,28 @@ ActiveRecord::Schema.define(:version => 20100923213844) do
     t.datetime "locked_at"
     t.datetime "failed_at"
     t.text     "locked_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "incidents", :force => true do |t|
+    t.string   "address"
+    t.string   "number"
+    t.string   "nature"
+    t.string   "cross_street_1"
+    t.string   "cross_street_2"
+    t.string   "response_level"
+    t.integer  "priority"
+    t.string   "dispatch_code"
+    t.string   "grid"
+    t.string   "tac_channel"
+    t.string   "fire_area"
+    t.text     "cautions"
+    t.datetime "alarm_struck_at"
+    t.datetime "first_on_scene_at"
+    t.datetime "upgrade_at"
+    t.datetime "patient_contact_at"
+    t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

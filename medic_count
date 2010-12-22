@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby 
+require 'rubygems'
+load 'lib/istatus_watcher.rb'
+
+puts "City status is #{IstatusWatcher.new.how_many_available?}."
